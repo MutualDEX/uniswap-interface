@@ -12,6 +12,7 @@ export const ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.AVALANCHE]: '0xE54Ca86531e17Ef3616d22Ca28b0D458b6C89106',
   [ChainId.MAINNET]: '0xE7Fb3e833eFE5F9c441105EB65Ef8b261266423B',
   [ChainId.MATIC]: '0x6207A65a8bbc87dD02C3109D2c74a6bCE4af1C8c'
+}
 
 export { PRELOADED_PROPOSALS } from './proposals'
 

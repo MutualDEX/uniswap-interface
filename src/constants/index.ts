@@ -1,9 +1,11 @@
-import { ChainId, JSBI, Percent, Token, WETH } from '@bigswap/sdk-core'
+import { ChainId, JSBI, Percent, Token, WETH } from '@bigswap/sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
 
-export const ROUTER_ADDRESS = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D'
+export const ROUTER_ADDRESS = '0xA97788A1b51938216305dBe8B16670C4aCfec612'; //'0x6207A65a8bbc87dD02C3109D2c74a6bCE4af1C8c';//
+
+export const ROUTER_ADDRESS = ''
 
 
 export declare const INIT_CODE_HASH = '0xf187ed688403aa4f7acfada758d8d53698753b998a3071b06f1b777f4330eaf3'

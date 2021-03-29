@@ -334,6 +334,7 @@ const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
             Charts <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
         </HeaderLinks>
+         </HeaderElement> 
       </HeaderRow>
       <HeaderControls>
         <HeaderElement>

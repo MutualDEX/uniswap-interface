@@ -339,4 +339,5 @@ const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
         </HeaderControls>
     </HeaderFrame>
   )
+ }
 }

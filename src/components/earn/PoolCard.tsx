@@ -11,7 +11,7 @@ import { useColor } from '../../hooks/useColor'
 import { currencyId } from '../../utils/currencyId'
 import { Break, CardNoise, CardBGImage } from './styled'
 import { unwrappedToken } from '../../utils/wrappedCurrency'
-// import useUSDCPrice from '../../utils/useUSDCPrice'
+import useUSDCPrice from '../../utils/useUSDCPrice'
 
 const StatContainer = styled.div`
    display: flex;
@@ -80,11 +80,12 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
 
   // get the color of the token
   const token = currency0 === ETHER ? token1 : token0
-  //const WETH = currency0 === ETHER ? token0 : token1
+  const WETH = currency0 === ETHER ? token0 : token1
   const backgroundColor = useColor(token)
 
-  //const totalSupplyOfStakingToken = useTotalSupply(stakingInfo.stakedAmount.token)
-  //const [, stakingTokenPair] = usePair(...stakingInfo.tokens)
+  const totalSupplyOfStakingToken = useTotalSupply(stakingInfo.stakedAmount.token)
+  const [, stakingTokenPair] = usePair(...stakingInfo.tokens)
+
 	
 	 // get the USD value of staked WETH
   const USDPrice = useUSDCPrice(WETH)

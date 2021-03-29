@@ -10,6 +10,8 @@ import LogoDark from '../../assets/svg/logo_white.svg'
 import { useActiveWeb3React } from '../../hooks'
 //import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
+import { TYPE, ExternalLink } from '../../theme'
+
 
 import { YellowCard } from '../Card'
 import Settings from '../Settings'
@@ -221,7 +223,7 @@ const StyledExternalLink = styled(ExternalLink).attrs({
 
   :hover,
   :focus {
-    color: ${({ theme }) => darken(0.1, theme.text1)};
+    color: ${({ theme }) => theme.text1};
   }
 
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`

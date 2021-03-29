@@ -12,7 +12,6 @@ import { currencyId } from '../../utils/currencyId'
 import { Break, CardNoise, CardBGImage } from './styled'
 import { unwrappedToken } from '../../utils/wrappedCurrency'
 // import useUSDCPrice from '../../utils/useUSDCPrice'
-import { PNG } from '../../constants'
 
 const StatContainer = styled.div`
    display: flex;

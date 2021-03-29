@@ -274,7 +274,6 @@ const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
   const { account, chainId } = useActiveWeb3React()
 
   let userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
-  const [isDark] = useDarkModeManager()
   const [darkMode] = useDarkModeManager()
 
   return (

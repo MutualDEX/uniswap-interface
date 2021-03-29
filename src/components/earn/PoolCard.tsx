@@ -103,7 +103,7 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
         totalSupplyOfStakingToken
       )
     )
-  }
+  },
 
   // get the USD value of staked WETH
   const USDPrice = useUSDCPrice(WETH)

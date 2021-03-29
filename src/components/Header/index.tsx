@@ -19,7 +19,7 @@ import Settings from '../Settings'
 import Menu from '../Menu'
 //import MaticWidget from '../MaticWidget'
 
-import { RowBetween } from '../Row'
+import Row, { RowFixed } from '../Row'
 import Web3Status from '../Web3Status'
 // import VersionSwitch from './VersionSwitch'
 
@@ -300,7 +300,7 @@ const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
 
   return (
     <HeaderFrame>
-      <RowBetween style={{ alignItems: 'flex-start' }} padding="1rem 1rem 0 1rem">
+        <HeaderRow>
         <HeaderElement>
         <Title href=".">
           <UniIcon>
@@ -359,7 +359,6 @@ const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
             <Menu />
           </HeaderElementWrap>
         </HeaderControls>
-      </RowBetween>
     </HeaderFrame>
   )
 }

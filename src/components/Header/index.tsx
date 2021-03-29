@@ -189,11 +189,13 @@ const StyledNavLink = styled(NavLink).attrs({
     font-weight: 600;
     color: ${({ theme }) => theme.text1};
   }
-
   :hover,
   :focus {
     color: ${({ theme }) => darken(0.1, theme.text1)};
   }
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+      display: none;
+`}
 `
 
 const StyledExternalLink = styled(ExternalLink).attrs({

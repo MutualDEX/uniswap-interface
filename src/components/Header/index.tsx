@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import Logo from '../../assets/svg/logo.svg'
 import LogoDark from '../../assets/svg/logo_white.svg'
 import { useActiveWeb3React } from '../../hooks'
-//import { useDarkModeManager } from '../../state/user/hooks'
+import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
 import { ExternalLink } from '../../theme'
 
@@ -273,6 +273,8 @@ const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
  export default function Header() {
   const { account, chainId } = useActiveWeb3React()
 
+ export default function Header() {
+  const { account, chainId } = useActiveWeb3React() 
 
   return (
     <HeaderFrame>

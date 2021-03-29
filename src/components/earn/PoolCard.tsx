@@ -70,89 +70,92 @@ const BottomSection = styled.div<{ showBackground: boolean }>`
  `
 
 export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) {
-	const token0 = stakingInfo.tokens[0]
-	const token1 = stakingInfo.tokens[1]
+  const token0 = stakingInfo.tokens[0]
+  const token1 = stakingInfo.tokens[1]
 
-	const currency0 = unwrappedToken(token0)
-	const currency1 = unwrappedToken(token1)
+  const currency0 = unwrappedToken(token0)
+  const currency1 = unwrappedToken(token1)
 
-	const isStaking = Boolean(stakingInfo.stakedAmount.greaterThan('0'))
+  const isStaking = Boolean(stakingInfo.stakedAmount.greaterThan('0'))
 
-	const avaxPool = currency0 === CAVAX || currency1 === CAVAX
-	let token: Token
-	if (avaxPool) {
-		token = currency0 === CAVAX ? token1 : token0
-	} else {
-		token = token0.equals(PNG[token0.chainId]) ? token1 : token0
-	}
-	// let valueOfTotalStakedAmountInUSDC: CurrencyAmount | undefined
-	// get the color of the token
-	let backgroundColor = useColor(token)
+  // get the color of the token
+  const token = currency0 === ETHER ? token1 : token0
+  //const WETH = currency0 === ETHER ? token0 : token1
+  const backgroundColor = useColor(token)
+
+  //const totalSupplyOfStakingToken = useTotalSupply(stakingInfo.stakedAmount.token)
+  //const [, stakingTokenPair] = usePair(...stakingInfo.tokens)
 	
-	// let usdToken: Token
-	// const USDPrice = useUSDCPrice(usdToken)
-	// valueOfTotalStakedAmountInUSDC =
-	// valueOfTotalStakedAmountInWavax && USDPrice?.quote(valueOfTotalStakedAmountInWavax)
+	 // get the USD value of staked WETH
+  const USDPrice = useUSDCPrice(WETH)
+  const valueOfTotalStakedAmountInUSDC =
+    valueOfTotalStakedAmountInWETH && USDPrice?.quote(valueOfTotalStakedAmountInWETH)
 	let weeklyRewardAmount = stakingInfo.totalRewardRate.multiply(JSBI.BigInt(60 * 60 * 24 * 7))
-	const weeklyRewardPerAvax = weeklyRewardAmount.divide(stakingInfo.totalStakedInWavax)
 
 	return (
-		<Wrapper showBackground={isStaking} bgColor={backgroundColor}>
-			<CardBGImage desaturate />
-			<CardNoise />
+    <Wrapper showBackground={isStaking} bgColor={backgroundColor}>
+      <CardBGImage desaturate />
+      <CardNoise />
 
-			<TopSection>
-				<DoubleCurrencyLogo currency0={currency0} currency1={currency1} size={24} />
-				<TYPE.white fontWeight={600} fontSize={24} style={{ marginLeft: '8px' }}>
-					{currency0.symbol}-{currency1.symbol}
-				</TYPE.white>
+      <TopSection>
+        <DoubleCurrencyLogo currency0={currency0} currency1={currency1} size={24} />
+        <TYPE.white fontWeight={600} fontSize={24} style={{ marginLeft: '8px' }}>
+          {currency0.symbol}-{currency1.symbol}
+        </TYPE.white>
 
-				<StyledInternalLink to={`/png/${currencyId(currency0)}/${currencyId(currency1)}`} style={{ width: '100%' }}>
-					<ButtonPrimary padding="8px" borderRadius="8px">
-						{isStaking ? 'Manage' : 'Deposit'}
-					</ButtonPrimary>
-				</StyledInternalLink>
-			</TopSection>
+        <StyledInternalLink to={`/uni/${currencyId(currency0)}/${currencyId(currency1)}`} style={{ width: '100%' }}>
+          <ButtonPrimary padding="8px" borderRadius="8px">
+            {isStaking ? 'Manage' : 'Deposit'}
+          </ButtonPrimary>
+        </StyledInternalLink>
+      </TopSection>
 
-			<StatContainer>
-				<RowBetween>
-					<TYPE.white> Total deposited</TYPE.white>
-					<TYPE.white>
-						{`${stakingInfo.totalStakedInWavax.toSignificant(4, { groupSeparator: ',' }) ?? '-'} AVAX`}
-						{/* {valueOfTotalStakedAmountInUSDC
-							? `$${valueOfTotalStakedAmountInUSDC.toFixed(0, { groupSeparator: ',' })}`
-							: `${valueOfTotalStakedAmountInWavax?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} AVAX`} */}
-					</TYPE.white>
-				</RowBetween>
-				<RowBetween>
-					<TYPE.white> Pool rate </TYPE.white>
-					<TYPE.white>{`${weeklyRewardAmount.toFixed(0, { groupSeparator: ',' })} PNG / week`}</TYPE.white>
-				</RowBetween>
-				<RowBetween>
-					<TYPE.white> Current reward </TYPE.white>
-					<TYPE.white>{`${weeklyRewardPerAvax.toFixed(4, {groupSeparator: ','}) ?? '-'} PNG / Week per AVAX`}</TYPE.white>
-				</RowBetween>
-			</StatContainer>
+      <StatContainer>
+        <RowBetween>
+          <TYPE.white> Total deposited</TYPE.white>
+          <TYPE.white>
+            {valueOfTotalStakedAmountInUSDC
+              ? `$${valueOfTotalStakedAmountInUSDC.toFixed(0, { groupSeparator: ',' })}`
+              : `${valueOfTotalStakedAmountInWETH?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} ETH`}
+          </TYPE.white>
+        </RowBetween>
+        <RowBetween>
+          <TYPE.white> Pool rate </TYPE.white>
+          <TYPE.white>
+            {stakingInfo
+              ? stakingInfo.active
+                ? `${stakingInfo.totalRewardRate
+                    ?.multiply(BIG_INT_SECONDS_IN_WEEK)
+                    ?.toFixed(0, { groupSeparator: ',' })} UNI / week`
+                : '0 UNI / week'
+              : '-'}
+          </TYPE.white>
+        </RowBetween>
+      </StatContainer>
 
-			{isStaking && (
-				<>
-					<Break />
-					<BottomSection showBackground={true}>
-						<TYPE.black color={'white'} fontWeight={500}>
-							<span>Your rate</span>
-						</TYPE.black>
+      {isStaking && (
+        <>
+          <Break />
+          <BottomSection showBackground={true}>
+            <TYPE.black color={'white'} fontWeight={500}>
+              <span>Your rate</span>
+            </TYPE.black>
 
-						<TYPE.black style={{ textAlign: 'right' }} color={'white'} fontWeight={500}>
-							<span role="img" aria-label="wizard-icon" style={{ marginRight: '0.5rem' }}>
-								⚡
-               </span>
-							{`${stakingInfo.rewardRate
-								?.multiply(`${60 * 60 * 24 * 7}`)
-								?.toSignificant(4, { groupSeparator: ',' })} PNG / week`}
-						</TYPE.black>
-					</BottomSection>
-				</>
-			)}
-		</Wrapper>
-	)
+            <TYPE.black style={{ textAlign: 'right' }} color={'white'} fontWeight={500}>
+              <span role="img" aria-label="wizard-icon" style={{ marginRight: '0.5rem' }}>
+                ⚡
+              </span>
+              {stakingInfo
+                ? stakingInfo.active
+                  ? `${stakingInfo.rewardRate
+                      ?.multiply(BIG_INT_SECONDS_IN_WEEK)
+                      ?.toSignificant(4, { groupSeparator: ',' })} UNI / week`
+                  : '0 UNI / week'
+                : '-'}
+            </TYPE.black>
+          </BottomSection>
+        </>
+      )}
+    </Wrapper>
+  )
 }

@@ -55,6 +55,11 @@ const TopSection = styled.div`
     grid-template-columns: 48px 1fr 96px;
   `};
 `
+// const APR = styled.div`
+//   display: flex;
+//   justify-content: flex-end;
+// `
+
 
 const BottomSection = styled.div<{ showBackground: boolean }>`
   padding: 12px 16px;
@@ -92,10 +97,10 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
       WETH,
       JSBI.divide(
         JSBI.multiply(
-          JSBI.multiply(stakingInfo.totalStakedAmount.raw, stakingTokenPair.reserveOf(WETH).raw),
+          JSBI.multiply(stakingInfo.totalStakedAmount, stakingTokenPair.reserveOf(WETH),
           JSBI.BigInt(2) // this is b/c the value of LP shares are ~double the value of the WETH they entitle owner to
         ),
-        totalSupplyOfStakingToken.raw
+        totalSupplyOfStakingToken
       )
     )
   }

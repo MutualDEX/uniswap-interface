@@ -30,9 +30,9 @@
     "@uniswap/governance": "^1.0.2",
     "@uniswap/liquidity-staker": "^1.0.2",
     "@uniswap/merkle-distributor": "1.0.1",
-    "@bigswap/v3-sdk": "1.0.2",
-    "@bigswap/sdk": "1.0.0",
-    "@bigswap/sdk-core": "1.0.1",
+    "@bigswap/v3-sdk": "1.0.3",
+    "@bigswap/sdk": "1.0.1",
+    "@bigswap/sdk-core": "1.0.2",
     "@uniswap/sdk": "3.0.3",
     "@uniswap/token-lists": "^1.0.0-beta.19",
     "@uniswap/v2-core": "1.0.1",
@@ -129,9 +129,9 @@
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "@maticnetwork/maticjs": "^2.0.37",
-    "@bigswap/sdk-core": "1.0.1",
-    "@bigswap/sdk": "1.0.0",
-    "@bigswap/v3-sdk": "1.0.2", 
+    "@bigswap/sdk-core": "1.0.2",
+    "@bigswap/sdk": "1.0.1",
+    "@bigswap/v3-sdk": "1.0.3", 
     "@uniswap/default-token-list": "^2.0.0"
   }
 }

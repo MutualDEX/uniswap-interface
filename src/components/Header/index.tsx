@@ -273,8 +273,6 @@ const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
  export default function Header() {
   const { account, chainId } = useActiveWeb3React()
 
- export default function Header() {
-  const { account, chainId } = useActiveWeb3React() 
 
   return (
     <HeaderFrame>
@@ -339,5 +337,4 @@ const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
         </HeaderControls>
     </HeaderFrame>
   )
- }
 }

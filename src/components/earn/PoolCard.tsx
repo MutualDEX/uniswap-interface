@@ -89,14 +89,8 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
 
   const totalSupplyOfStakingToken = useTotalSupply(stakingInfo.stakedAmount.token)
   const [, stakingTokenPair] = usePair(...stakingInfo.tokens)
-
 	
-	 // get the USD value of staked WETH
-  const USDPrice = useUSDCPrice(WETH)
-  const valueOfTotalStakedAmountInUSDC =
-    valueOfTotalStakedAmountInWETH && USDPrice?.quote(valueOfTotalStakedAmountInWETH)
-	let weeklyRewardAmount = stakingInfo.totalRewardRate.multiply(JSBI.BigInt(60 * 60 * 24 * 7))
-
+	
     // let returnOverMonth: Percent = new Percent('0')
   let valueOfTotalStakedAmountInWETH: TokenAmount | undefined
   if (totalSupplyOfStakingToken && stakingTokenPair) {
@@ -113,6 +107,12 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
     )
   }
   
+	  // get the USD value of staked WETH
+  const USDPrice = useUSDCPrice(WETH)
+  const valueOfTotalStakedAmountInUSDC =
+    valueOfTotalStakedAmountInWETH && USDPrice?.quote(valueOfTotalStakedAmountInWETH)
+
+	
   
 	return (
     <Wrapper showBackground={isStaking} bgColor={backgroundColor}>

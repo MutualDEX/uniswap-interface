@@ -93,6 +93,23 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
     valueOfTotalStakedAmountInWETH && USDPrice?.quote(valueOfTotalStakedAmountInWETH)
 	let weeklyRewardAmount = stakingInfo.totalRewardRate.multiply(JSBI.BigInt(60 * 60 * 24 * 7))
 
+    // let returnOverMonth: Percent = new Percent('0')
+  let valueOfTotalStakedAmountInWETH: TokenAmount | undefined
+  if (totalSupplyOfStakingToken && stakingTokenPair) {
+    // take the total amount of LP tokens staked, multiply by ETH value of all LP tokens, divide by all LP tokens
+    valueOfTotalStakedAmountInWETH = new TokenAmount(
+      WETH,
+      JSBI.divide(
+        JSBI.multiply(
+          JSBI.multiply(stakingInfo.totalStakedAmount.raw, stakingTokenPair.reserveOf(WETH).raw),
+          JSBI.BigInt(2) // this is b/c the value of LP shares are ~double the value of the WETH they entitle owner to
+        ),
+        totalSupplyOfStakingToken.raw
+      )
+    )
+  }
+  
+  
 	return (
     <Wrapper showBackground={isStaking} bgColor={backgroundColor}>
       <CardBGImage desaturate />

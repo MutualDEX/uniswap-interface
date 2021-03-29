@@ -300,7 +300,8 @@ const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
 
   return (
     <HeaderFrame>
-      <HeaderRow>
+      <RowBetween style={{ alignItems: 'flex-start' }} padding="1rem 1rem 0 1rem">
+        <HeaderElement>
         <Title href=".">
           <UniIcon>
             <img width={'24px'} src={darkMode ? LogoDark : Logo} alt="logo" />

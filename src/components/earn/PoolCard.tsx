@@ -4,7 +4,7 @@ import { RowBetween } from '../Row'
 import styled from 'styled-components'
 import { TYPE, StyledInternalLink } from '../../theme'
 import DoubleCurrencyLogo from '../DoubleLogo'
-import { ETHER, JSBI, TokenAmount } from '@uniswap/sdk'
+import { ETHER, JSBI, TokenAmount } from '@bigswap/sdk'
 import { ButtonPrimary } from '../Button'
 import { StakingInfo } from '../../state/stake/hooks'
 import { useColor } from '../../hooks/useColor'
@@ -14,7 +14,6 @@ import { unwrappedToken } from '../../utils/wrappedCurrency'
 import { useTotalSupply } from '../../data/TotalSupply'
 import { usePair } from '../../data/Reserves'
 import useUSDCPrice from '../../utils/useUSDCPrice'
-import { BIG_INT_SECONDS_IN_WEEK } from '../../constants'
 
 const StatContainer = styled.div`
   display: flex;
@@ -139,7 +138,7 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
             {stakingInfo
               ? stakingInfo.active
                 ? `${stakingInfo.totalRewardRate
-                    ?.multiply(BIG_INT_SECONDS_IN_WEEK)
+             			?.multiply(`${60 * 60 * 24 * 7}`)
                     ?.toFixed(0, { groupSeparator: ',' })} UNI / week`
                 : '0 UNI / week'
               : '-'}
@@ -162,7 +161,7 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
               {stakingInfo
                 ? stakingInfo.active
                   ? `${stakingInfo.rewardRate
-                      ?.multiply(BIG_INT_SECONDS_IN_WEEK)
+               			?.multiply(`${60 * 60 * 24 * 7}`)
                       ?.toSignificant(4, { groupSeparator: ',' })} UNI / week`
                   : '0 UNI / week'
                 : '-'}

@@ -12,7 +12,7 @@ import LogoDark from '../../assets/svg/logo_white.svg'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
-import { TYPE, ExternalLink } from '../../theme'
+import { ExternalLink } from '../../theme'
 
 
 import { YellowCard } from '../Card'

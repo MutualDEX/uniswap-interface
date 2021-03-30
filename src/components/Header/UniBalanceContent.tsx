@@ -46,7 +46,7 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
   const uniBalance: TokenAmount | undefined = useTokenBalance()
 
   const totalSupply: TokenAmount | undefined = useTotalSupply()
-  const uniPrice = useUSDCPrice(uni)
+  const uniPrice = useUSDCPrice()
   const blockTimestamp = useCurrentBlockTimestamp()
   const circulation: TokenAmount | undefined = useMemo(
     () =>

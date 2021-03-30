@@ -2,6 +2,8 @@ import { ChainId } from '@bigswap/sdk'
 import React from 'react'
 import { Text } from 'rebass'
 import { NavLink } from 'react-router-dom'
+import { darken } from 'polished'
+import { useTranslation } from 'react-i18next'
 
 import styled from 'styled-components'
 
@@ -10,7 +12,7 @@ import LogoDark from '../../assets/svg/logo_white.svg'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
-import { ExternalLink } from '../../theme'
+import { TYPE, ExternalLink } from '../../theme'
 
 
 import { YellowCard } from '../Card'
@@ -193,7 +195,7 @@ const StyledNavLink = styled(NavLink).attrs({
   }
   :hover,
   :focus {
-    color: ${({ theme }) => theme.text1};
+    color: ${({ theme }) => darken(0.1, theme.text1)};
   }
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
       display: none;
@@ -223,7 +225,7 @@ const StyledExternalLink = styled(ExternalLink).attrs({
 
   :hover,
   :focus {
-    color: ${({ theme }) => theme.text1};
+   color: ${({ theme }) => darken(0.1, theme.text1)};
   }
 
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
@@ -272,6 +274,8 @@ const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
 
  export default function Header() {
   const { account, chainId } = useActiveWeb3React()
+  const { t } = useTranslation()
+
 
   let userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const [darkMode] = useDarkModeManager()

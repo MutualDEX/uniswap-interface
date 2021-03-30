@@ -1,4 +1,4 @@
-import { ChainId, TokenAmount } from '@uniswap/sdk'
+import { ChainId, TokenAmount } from '@bigswap/sdk'
 import React, { useMemo } from 'react'
 import { X } from 'react-feather'
 import styled from 'styled-components'
@@ -9,7 +9,7 @@ import { useActiveWeb3React } from '../../hooks'
 import useCurrentBlockTimestamp from '../../hooks/useCurrentBlockTimestamp'
 import { useAggregateUniBalance, useTokenBalance } from '../../state/wallet/hooks'
 import { ExternalLink, TYPE, UniTokenAnimated } from '../../theme'
-import { computeUniCirculation } from '../../utils/computeUniCirculation'
+//import { computeUniCirculation } from '../../utils/computeUniCirculation'
 import useUSDCPrice from '../../utils/useUSDCPrice'
 import { AutoColumn } from '../Column'
 import { RowBetween } from '../Row'
@@ -48,13 +48,13 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
   const totalSupply: TokenAmount | undefined = useTotalSupply()
   const uniPrice = useUSDCPrice()
   const blockTimestamp = useCurrentBlockTimestamp()
-  const circulation: TokenAmount | undefined = useMemo(
+  /**const circulation: TokenAmount | undefined = useMemo(
     () =>
       blockTimestamp && uni && chainId === ChainId.MAINNET
         ? computeUniCirculation(uni, blockTimestamp)
         : totalSupply,
     [blockTimestamp, chainId, totalSupply, uni]
-  )
+  )*/
 
 
   return (

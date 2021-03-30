@@ -1,5 +1,5 @@
 import { ChainId, TokenAmount } from '@bigswap/sdk'
-import React, { useMemo } from 'react'
+//import React, { useMemo } from 'react'
 import { X } from 'react-feather'
 import styled from 'styled-components'
 import tokenLogo from '../../assets/images/token-logo.png'

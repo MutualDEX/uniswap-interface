@@ -1,4 +1,5 @@
-import { ChainId, TokenAmount } from '@bigswap/sdk'
+import { ChainId } from '@bigswap/sdk'
+import { TokenAmount } from '@uniswap/sdk'
 //import React, { useMemo } from 'react'
 import { X } from 'react-feather'
 import styled from 'styled-components'

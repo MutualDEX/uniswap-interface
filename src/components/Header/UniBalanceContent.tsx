@@ -96,7 +96,6 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
             </RowBetween>
             <RowBetween>
               <TYPE.white color="white">UNI in circulation:</TYPE.white>
-              <TYPE.white color="white">{circulation?.toFixed(0, { groupSeparator: ',' })}</TYPE.white>
             </RowBetween>
             <RowBetween>
               <TYPE.white color="white">Total Supply</TYPE.white>

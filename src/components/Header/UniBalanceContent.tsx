@@ -93,7 +93,6 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
           <AutoColumn gap="md">
             <RowBetween>
               <TYPE.white color="white">UNI price:</TYPE.white>
-              <TYPE.white color="white">${uniPrice?.toFixed(2) ?? '-'}</TYPE.white>
             </RowBetween>
             <RowBetween>
               <TYPE.white color="white">UNI in circulation:</TYPE.white>

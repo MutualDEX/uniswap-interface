@@ -7,11 +7,11 @@ import tokenLogo from '../../assets/images/token-logo.png'
 import { UNI } from '../../constants'
 import { useTotalSupply } from '../../data/TotalSupply'
 import { useActiveWeb3React } from '../../hooks'
-import useCurrentBlockTimestamp from '../../hooks/useCurrentBlockTimestamp'
+//import useCurrentBlockTimestamp from '../../hooks/useCurrentBlockTimestamp'
 import { useAggregateUniBalance, useTokenBalance } from '../../state/wallet/hooks'
 import { ExternalLink, TYPE, UniTokenAnimated } from '../../theme'
 //import { computeUniCirculation } from '../../utils/computeUniCirculation'
-import useUSDCPrice from '../../utils/useUSDCPrice'
+//import useUSDCPrice from '../../utils/useUSDCPrice'
 import { AutoColumn } from '../Column'
 import { RowBetween } from '../Row'
 import { Break, CardBGImage, CardNoise, CardSection, DataCard } from '../earn/styled'
@@ -44,11 +44,11 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
   const uni = chainId ? UNI[chainId] : undefined
   
   const total = useAggregateUniBalance()
-  const uniBalance: TokenAmount | undefined = useTokenBalance()
+  const uniBalance: TokenAmount | undefined = useTokenBalance(uni)
 
-  const totalSupply: TokenAmount | undefined = useTotalSupply()
-  const uniPrice = useUSDCPrice()
-  const blockTimestamp = useCurrentBlockTimestamp()
+  const totalSupply: TokenAmount | undefined = useTotalSupply(uni)
+  //const uniPrice = useUSDCPrice()
+  //const blockTimestamp = useCurrentBlockTimestamp()
   /**const circulation: TokenAmount | undefined = useMemo(
     () =>
       blockTimestamp && uni && chainId === ChainId.MAINNET

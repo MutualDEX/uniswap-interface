@@ -44,9 +44,9 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
   const uni = chainId ? UNI[chainId] : undefined
   
   const total = useAggregateUniBalance()
-  const uniBalance: TokenAmount | undefined = useTokenBalance(uni)
+  const uniBalance: TokenAmount | undefined = useTokenBalance()
 
-  const totalSupply: TokenAmount | undefined = useTotalSupply(uni)
+  const totalSupply: TokenAmount | undefined = useTotalSupply()
   //const uniPrice = useUSDCPrice()
   //const blockTimestamp = useCurrentBlockTimestamp()
   /**const circulation: TokenAmount | undefined = useMemo(
